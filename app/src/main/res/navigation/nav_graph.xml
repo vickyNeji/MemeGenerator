@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nejivicky.memefactorymine.views.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"
+        >
+        <action
+            android:id="@+id/action_homeFragment_to_dialogCreateMemeOptions"
+            app:destination="@id/dialogCreateMemeOptions" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.nejivicky.memefactorymine.views.SavedFragment"
+        android:label="SavedFragment"
+        tools:layout="@layout/fragment_saved"
+        />
+    <fragment
+        android:id="@+id/createMemeByTextFragment"
+        android:name="com.nejivicky.memefactorymine.views.CreateMemeByTextFragment"
+        android:label="CreateMemeByTextFragment"
+        tools:layout="@layout/fragment_create_meme_by_text_"
+        >
+        <argument
+            android:name="template"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/createMemeByDrawing"
+        android:name="com.nejivicky.memefactorymine.views.CreateMemeByDrawing"
+        android:label="CreateMemeByDrawing"
+        tools:layout="@layout/fragment_create_draw"
+        >
+        <argument
+            android:name="template"
+            app:argType="integer" />
+    </fragment>
+    <dialog
+        android:id="@+id/dialogCreateMemeOptions"
+        android:name="com.nejivicky.memefactorymine.views.DialogCreateMemeOptions"
+        android:label="DialogCreateMemeOptions"
+        tools:layout="@layout/dialog_meme_create_option"
+        >
+        <action
+            android:id="@+id/action_dialogCreateMemeOptions_to_createMemeByTextFragment"
+            app:destination="@id/createMemeByTextFragment" />
+        <action
+            android:id="@+id/action_dialogCreateMemeOptions_to_createMemeByDrawing"
+            app:destination="@id/createMemeByDrawing" />
+        <argument
+            android:name="template"
+            app:argType="integer" />
+    </dialog>
+
+
+</navigation>

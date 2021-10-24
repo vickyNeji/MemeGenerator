@@ -43,7 +43,7 @@
     </fragment>
     <dialog
         android:id="@+id/dialogCreateMemeOptions"
-        android:name="com.nejivicky.memefactorymine.views.DialogCreateMemeOptions"
+        android:name="com.nejivicky.memefactorymine.views.dialogs.DialogCreateMemeOptions"
         android:label="DialogCreateMemeOptions"
         tools:layout="@layout/dialog_meme_create_option"
         >

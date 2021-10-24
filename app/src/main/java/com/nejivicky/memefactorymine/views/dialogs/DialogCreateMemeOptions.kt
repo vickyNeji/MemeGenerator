@@ -1,4 +1,4 @@
-package com.nejivicky.memefactorymine.views
+package com.nejivicky.memefactorymine.views.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.nejivicky.memefactorymine.R
 import com.nejivicky.memefactorymine.databinding.DialogMemeCreateOptionBinding
 
 class DialogCreateMemeOptions:DialogFragment() {

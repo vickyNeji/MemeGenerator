@@ -1,5 +1,8 @@
 package com.nejivicky.memefactorymine.views
-import android.graphics.Color
+
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -9,13 +12,14 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.nejivicky.memefactorymine.R
-import com.nejivicky.memefactorymine.adapters.AdapterColorPalette
 import com.nejivicky.memefactorymine.databinding.FragmentCreateMemeByTextBinding
 import com.nejivicky.memefactorymine.utils.showToast
 import com.nejivicky.memefactorymine.views.dialogs.InsertTextDialog
+import java.io.IOException
+import java.util.*
 import kotlin.math.atan2
 
 class CreateMemeByTextFragment:Fragment(R.layout.fragment_create_meme_by_text_),InsertTextDialog.OnTextSubmit {
@@ -49,6 +53,23 @@ class CreateMemeByTextFragment:Fragment(R.layout.fragment_create_meme_by_text_),
 
         fragmentCreateMemeByTextBinding.btAddTextView.setOnClickListener {
             InsertTextDialog(this).show(childFragmentManager,"insertTextDialog")
+        }
+
+        fragmentCreateMemeByTextBinding.btnSaveView.setOnClickListener {
+            textViewAdded.forEach {view->
+                val delete = view.findViewById<ImageView>(R.id.ivDeleteTvCreated)
+                val rotate = view.findViewById<ImageView>(R.id.ivRotateTvCreated)
+                val remove = view.findViewById<ImageView>(R.id.ivRemoveSettings)
+                delete.visibility = View.INVISIBLE
+                rotate.visibility = View.INVISIBLE
+                remove.visibility = View.INVISIBLE
+            }
+
+            val signature= screenShot(fragmentCreateMemeByTextBinding.rlIvHolder)
+            savePhotoToInternalStorage(UUID.randomUUID().toString(),signature!!)
+            requireContext().showToast("Saved")
+            findNavController().popBackStack()
+
         }
 
 
@@ -85,7 +106,7 @@ class CreateMemeByTextFragment:Fragment(R.layout.fragment_create_meme_by_text_),
         val x = event.rawX
         val y = event.rawY
         val owner = view.parent as ViewGroup
-        val xc = fragmentCreateMemeByTextBinding.rlMemeByText.width / 2;
+        val xc = fragmentCreateMemeByTextBinding.rlMemeByText.width / 2
         val yc = fragmentCreateMemeByTextBinding.rlMemeByText.height / 2
 
 
@@ -158,5 +179,29 @@ class CreateMemeByTextFragment:Fragment(R.layout.fragment_create_meme_by_text_),
 
     }
 
+    private fun screenShot(view: View): Bitmap?{
+        val bitmap=Bitmap.createBitmap(
+            view.width,
+            view.height,Bitmap.Config.ARGB_8888
+        )
+        val canvas=Canvas(bitmap)
+        view.draw(canvas)
+        return bitmap
+    }
+
+
+    private fun savePhotoToInternalStorage(filename: String, bmp: Bitmap): Boolean {
+        return try {
+            requireActivity().openFileOutput("$filename.jpg", Context.MODE_PRIVATE).use { stream ->
+                if (!bmp.compress(Bitmap.CompressFormat.JPEG, 95, stream)) {
+                    throw IOException("Couldn't save bitmap.")
+                }
+            }
+            true
+        } catch (e: IOException) {
+            e.printStackTrace()
+            false
+        }
+    }
 
 }

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.service.controls.actions.FloatAction
 import android.view.View
+import android.widget.RelativeLayout
 import androidx.fragment.app.DialogFragment
 import com.nejivicky.memefactorymine.R
 import com.nejivicky.memefactorymine.adapters.AdapterColorPalette
@@ -18,6 +19,7 @@ class InsertTextDialog(private val onTextSubmit: OnTextSubmit):DialogFragment(R.
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dialog?.window?.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         dialogInsertBinding= DialogInsertBinding.bind(view)
         initColorPalette()
 
@@ -32,13 +34,14 @@ class InsertTextDialog(private val onTextSubmit: OnTextSubmit):DialogFragment(R.
 
     private fun initColorPalette() {
         val colorList = listOf(
+            Color.WHITE,
+            Color.BLACK,
             Color.GREEN,
             Color.RED,
             Color.rgb(200, 100, 120),
             Color.rgb(100, 200, 0),
             Color.LTGRAY,
             Color.CYAN,
-            Color.BLACK,
             Color.rgb(10, 130, 200),
             Color.rgb(200, 200, 20),
             Color.rgb(200, 0, 200)

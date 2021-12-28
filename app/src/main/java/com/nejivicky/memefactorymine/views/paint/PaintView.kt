@@ -3,8 +3,10 @@ package com.nejivicky.memefactorymine.views.paint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
+import com.bumptech.glide.Glide
 import com.nejivicky.memefactorymine.utils.toMutableBitmap
 import java.util.ArrayList
 
@@ -40,8 +42,13 @@ class PaintView : View {
         }
     }
 
-    fun init(template:Int){
-        bitmapFromRes=BitmapFactory.decodeResource(resources,template)
+    fun init(template:String){
+        //bitmapFromRes=BitmapFactory.decodeResource(resources,template)
+        bitmapFromRes=Glide.with(context).asBitmap()
+            .load(template)
+            .submit()
+            .get()
+
         mCanvas = toMutableBitmap(bitmapFromRes!!)?.let { Canvas(it) }
         currentColor= COLOR_PEN
     }
@@ -63,7 +70,9 @@ class PaintView : View {
         super.onDraw(canvas)
         canvas?.save()
         mCanvas=canvas
-        mCanvas?.drawBitmap(bitmapFromRes!!,0f,0f,mBitmapPaint)
+        val backgroundRect=Rect(0,0,mCanvas?.width!!,mCanvas?.height!!)
+
+        bitmapFromRes?.let { mCanvas?.drawBitmap(it,null,backgroundRect,mBitmapPaint) }
         for(fp in paths){
             mPaint?.color=fp.color
             mPaint?.strokeWidth= fp.strokeWidth.toFloat()

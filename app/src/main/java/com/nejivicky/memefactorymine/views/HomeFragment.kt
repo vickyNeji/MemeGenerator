@@ -27,13 +27,13 @@ class HomeFragment: Fragment(R.layout.fragment_home),RvTemplateAdapter.OnTemplat
     }
 
     override fun onTemplateCLick(template: Int) {
-        requireContext().showToast("$template")
+        //requireContext().showToast("$template")
 //        DialogCreateMemeOptions().getInstance(template).show(
 //            childFragmentManager,"memeCreateOptions"
 //        )
-        findNavController().navigate(
-            HomeFragmentDirections.actionHomeFragmentToDialogCreateMemeOptions(template)
-        )
+//        findNavController().navigate(
+//            HomeFragmentDirections.actionHomeFragmentToDialogCreateMemeOptions(template)
+//        )
     }
 
 

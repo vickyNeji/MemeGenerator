@@ -23,10 +23,11 @@ class MainActivity : AppCompatActivity() {
         navController=navHostFragment.findNavController()
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment,R.id.savedFragment),
+            setOf(R.id.homeFragmentTest,R.id.savedFragment),
             binding.drawerLayout
         )
         setSupportActionBar(binding.toolbar)
+
         setupActionBarWithNavController(navController,appBarConfiguration)
         //binding.toolbar.setupWithNavController(navController,appBarConfiguration)
         binding.navigationView.setupWithNavController(navController)

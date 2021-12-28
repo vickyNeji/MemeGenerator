@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rlMemeByText"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent">
 
 
@@ -17,8 +18,8 @@
         <ImageView
             android:id="@+id/ivMemeCreateText"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:scaleType="fitXY"
+            android:layout_height="450dp"
+            android:src="@drawable/afraid_to_ask"
             app:layout_constraintTop_toTopOf="parent" />
     </RelativeLayout>
 
@@ -34,10 +35,11 @@
         android:backgroundTint="#FAF7F7"
         android:drawableLeft="@drawable/ic_baseline_save_24"
         android:shadowColor="@color/black"
-        android:text="save"
+        android:text="Save"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
-        app:rippleColor="#FFEB3B" />
+        app:rippleColor="@color/darkGrey" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,13 +53,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#C8C3C3"
+            android:backgroundTint="#FAF7F7"
             android:drawableLeft="@drawable/ic_baseline_text_fields_24"
             android:shadowColor="@color/black"
             android:text="Add Text"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
             app:cornerRadius="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:rippleColor="#FFEB3B"
+            app:rippleColor="@color/darkGrey"
             app:layout_constraintRight_toLeftOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="parent"
             />
@@ -66,13 +70,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#C8C3C3"
+            android:backgroundTint="#FAF7F7"
             android:drawableLeft="@drawable/ic_baseline_add_a_photo_24"
             android:shadowColor="@color/black"
             android:text="Add Image"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
             app:cornerRadius="10dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:rippleColor="#FFEB3B"
+            app:rippleColor="@color/darkGrey"
             app:layout_constraintLeft_toRightOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="parent"
             />

@@ -9,6 +9,7 @@ object Constants {
         R.drawable.mocking_spongebob,
         R.drawable.two_buttons,
         R.drawable.blank_template,
+        R.drawable.american_chopper_argument,
         R.drawable.anakin_padme,
         R.drawable.bike_fall,
         R.drawable.boardroom_meeting_suggestion,

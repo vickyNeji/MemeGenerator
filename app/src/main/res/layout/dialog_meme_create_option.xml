@@ -2,26 +2,30 @@
 <androidx.cardview.widget.CardView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/darkGrey"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
         android:layout_marginHorizontal="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="8dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:textSize="25sp"
-            android:text="Create meme by..."
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Create meme by..."
+            android:textColor="@color/grey"
+            android:textSize="25sp" />
+
         <View
             android:id="@+id/viewSeparatorDialog"
-            android:layout_below="@id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/black"/>
+            android:layout_below="@id/tvTitle"
+            android:background="@color/white" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clDraw"
@@ -43,6 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 android:text="By drawing over template"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/ivCreateMemeByDrawing"
@@ -70,6 +76,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="By Adding text"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/ivCreateMemeByAddinText"
                 app:layout_constraintTop_toTopOf="parent" />

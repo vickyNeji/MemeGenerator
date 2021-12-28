@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:id="@+id/clMemeCreateFragment"
     >
 
@@ -20,7 +21,7 @@
             android:id="@+id/paintViewCanvas"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="450dp"
             />
     </LinearLayout>
 
@@ -28,24 +29,62 @@
         android:layout_marginHorizontal="5dp"
         app:layout_constraintBottom_toTopOf="@id/cardViewBottomMenu"
         android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/darkGrey"
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_marginHorizontal="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/ivClearDraw"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:src="@drawable/eraser" />
-            <ImageView
-                android:src="@drawable/ic_baseline_save_24"
-                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FAF7F7"
+                android:drawableLeft="@drawable/eraser"
+                android:shadowColor="@color/black"
+                android:text="Clear"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/darkGrey" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/ivSaveDraw"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FAF7F7"
+                android:drawableLeft="@drawable/ic_baseline_save_24"
+                android:shadowColor="@color/black"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/darkGrey" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivClearDraw"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_alignParentLeft="true"-->
+<!--                android:src="@drawable/eraser"-->
+<!--                app:tint="@color/grey" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivSaveDraw"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:src="@drawable/ic_baseline_save_24"-->
+<!--                app:tint="@color/grey" />-->
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -58,6 +97,7 @@
         android:id="@+id/cardViewBottomMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/darkGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
@@ -72,11 +112,26 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
+<!--            <ImageView-->
+<!--                android:id="@+id/ivDrawPen"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:background="@drawable/ic_baseline_draw_24" />-->
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/ivDrawPen"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_baseline_draw_24" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="#FAF7F7"
+                android:drawableLeft="@drawable/ic_baseline_brush_24"
+                android:shadowColor="@color/black"
+                android:text="Brush Size"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/darkGrey" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvColor"
@@ -95,6 +150,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
         tools:visibility="visible"
+        app:cardBackgroundColor="@color/darkGrey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout

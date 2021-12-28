@@ -16,13 +16,18 @@ import androidx.navigation.fragment.navArgs
 import com.nejivicky.memefactorymine.R
 import com.nejivicky.memefactorymine.adapters.AdapterColorPalette
 import com.nejivicky.memefactorymine.databinding.FragmentCreateDrawBinding
+
+import com.nejivicky.memefactorymine.utils.showAlertDialog
 import com.nejivicky.memefactorymine.views.paint.PaintView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.*
 
 class CreateMemeByDrawing:Fragment(R.layout.fragment_create_draw),AdapterColorPalette.OnPaletteClick {
 
-     lateinit var binding:FragmentCreateDrawBinding
+     lateinit var binding: FragmentCreateDrawBinding
      private val args:CreateMemeByDrawingArgs by navArgs()
      lateinit var paintView: PaintView
     override fun onCreateView(
@@ -37,12 +42,18 @@ class CreateMemeByDrawing:Fragment(R.layout.fragment_create_draw),AdapterColorPa
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         paintView=requireActivity().findViewById(R.id.paintViewCanvas)
-        paintView.init(args.template)
+        CoroutineScope(Dispatchers.IO).launch {
+            paintView.init(args.templateUrl)
+        }
+
         initPalette()
 
 
         binding.ivClearDraw.setOnClickListener {
-            paintView.clear()
+            showAlertDialog(requireContext(),
+                "Are you sure you want to clear your drawing?","Warning"
+            ) { paintView.clear() }.show()
+
         }
 
         binding.ivSaveDraw.setOnClickListener {
@@ -98,13 +109,13 @@ class CreateMemeByDrawing:Fragment(R.layout.fragment_create_draw),AdapterColorPa
     }
 
     override fun onPaletteClicked(selectedColor: Int) {
-        val drawable= AppCompatResources.getDrawable(requireContext(), R.drawable.ic_baseline_draw_24)
-        drawable?.let {
-            val wrappedDrawable = DrawableCompat.wrap(it).apply {
-                setTint(selectedColor)
-            }
-            binding.ivDrawPen.background=wrappedDrawable
-        }
+//        val drawable= AppCompatResources.getDrawable(requireContext(), R.drawable.ic_baseline_draw_24)
+//        drawable?.let {
+//            val wrappedDrawable = DrawableCompat.wrap(it).apply {
+//                setTint(selectedColor)
+//            }
+//            binding.ivDrawPen.background=wrappedDrawable
+//        }
         paintView.setColor(selectedColor)
     }
 

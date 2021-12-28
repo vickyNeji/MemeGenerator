@@ -1,5 +1,6 @@
 package com.nejivicky.memefactorymine.utils
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -51,4 +52,17 @@ fun resizeImage(image: Bitmap, maxWidth: Int, maxHeight: Int): Bitmap? {
     val canvas = Canvas(bitmap)
     view.draw(canvas)
     return bitmap
+}
+
+inline fun showAlertDialog(context:Context, message: String, title:String, crossinline onClick:()->Unit):AlertDialog{
+    return AlertDialog.Builder(context)
+        .setMessage(message)
+        .setTitle(title)
+        .setPositiveButton("Ok"){dialog,which->
+                onClick()
+        }.setNegativeButton("No"){
+            dialog,_->
+            dialog.dismiss()
+        }.create()
+
 }

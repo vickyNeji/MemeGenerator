@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragmentTest">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -18,28 +18,25 @@
     <fragment
         android:id="@+id/savedFragment"
         android:name="com.nejivicky.memefactorymine.views.SavedFragment"
-        android:label="SavedFragment"
-        tools:layout="@layout/fragment_saved"
-        />
+        android:label="Saved Memes"
+        tools:layout="@layout/fragment_saved" />
     <fragment
         android:id="@+id/createMemeByTextFragment"
         android:name="com.nejivicky.memefactorymine.views.CreateMemeByTextFragment"
-        android:label="CreateMemeByTextFragment"
-        tools:layout="@layout/fragment_create_meme_by_text_"
-        >
+        android:label="Add Text"
+        tools:layout="@layout/fragment_create_meme_by_text_">
         <argument
-            android:name="template"
-            app:argType="integer" />
+            android:name="templateUrl"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/createMemeByDrawing"
         android:name="com.nejivicky.memefactorymine.views.CreateMemeByDrawing"
-        android:label="CreateMemeByDrawing"
-        tools:layout="@layout/fragment_create_draw"
-        >
+        android:label="Draw Over Template"
+        tools:layout="@layout/fragment_create_draw">
         <argument
-            android:name="template"
-            app:argType="integer" />
+            android:name="templateUrl"
+            app:argType="string" />
     </fragment>
     <dialog
         android:id="@+id/dialogCreateMemeOptions"
@@ -54,9 +51,18 @@
             android:id="@+id/action_dialogCreateMemeOptions_to_createMemeByDrawing"
             app:destination="@id/createMemeByDrawing" />
         <argument
-            android:name="template"
-            app:argType="integer" />
+            android:name="templateLink"
+            app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/homeFragmentTest"
+        android:name="com.nejivicky.memefactorymine.views.HomeFragmentTest"
+        android:label="Meme Factory"
+        tools:layout="@layout/fragment_home_test">
+        <action
+            android:id="@+id/action_homeFragmentTest_to_dialogCreateMemeOptions"
+            app:destination="@id/dialogCreateMemeOptions" />
+    </fragment>
 
 
 </navigation>

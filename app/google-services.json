@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "551378571171",
+    "project_id": "mememaker-db208",
+    "storage_bucket": "mememaker-db208.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551378571171:android:b157c59d074f9ae3361416",
+        "android_client_info": {
+          "package_name": "com.nejivicky.memefactorymine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551378571171-umng85t7qnmp1esldivb79dl3vtnik0o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd9pnv7SKINaHVArQ3sq1kVAcqFkDMYBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551378571171-umng85t7qnmp1esldivb79dl3vtnik0o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
